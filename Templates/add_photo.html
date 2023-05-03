@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Dodaj zdjęcie
+{% endblock %}
+
+{% block content %}
+    <h1>Dodaj zdjęcie</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        <label>Nazwa:</label>
+        <input type="text" name="name"><br><br>
+
+        <label>Zdjęcie:</label>
+        <input type="file" name="photo"><br><br>
+
+        <input type="submit" value="Dodaj">
+    </form>
+{% endblock %}
+

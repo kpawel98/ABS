@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Dodaj zdjęcie
+{% endblock %}
+
+{% block content %}
+    <h1>Moje zdjęcia</h1>
+
+    <ul>
+        {% for photo in photos %}
+            <li>{{ photo[0] }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/add_photo">Dodaj zdjęcie</a>
+
+{% endblock %}

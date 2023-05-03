@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Losowanie zwycięzców</title>
+  </head>
+  <body>
+    <h1>Losowanie zwycięzców</h1>
+    <form method="POST" action="{{ url_for('losowanie') }}">
+      <label for="tabela">Wybierz tabelę:</label>
+      <select name="tabela" id="tabela">
+        {% for tabela in tabele %}
+          <option value="{{ tabela }}">{{ tabela }}</option>
+        {% endfor %}
+      </select>
+      <br>
+      <label for="ilosc">Podaj ilość zwycięzców:</label>
+      <input type="number" name="ilosc" id="ilosc" min="1" max="100">
+      <br>
+      <button type="submit">Losuj</button>
+    </form>
+    {% if zwyciezcy %}
+      <h2>Wylosowani zwycięzcy:</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for zwyciezca in zwyciezcy %}
+            <tr>
+              <td>{{ zwyciezca[0] }}</td>
+              <td>{{ zwyciezca[1] }}</td>
+              <td>{{ zwyciezca[2] }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+  </body>
+</html>

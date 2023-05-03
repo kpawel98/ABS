@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Dodaj zdjęcie
+{% endblock %}
+
+{% block content %}
+    <h1>Wybierz zdjęcie</h1>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Nazwa</th>
+          <th scope="col">Miniaturka</th>
+          <th scope="col">Weź udział</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for photo in photos %}
+        <tr>
+          <td>{{ photo.name }}</td>
+          <td><img src="{{ photo.path }}" width="100" height="100"></td>
+            <td>
+              <form method="post" action="{{ url_for('wybierz') }}">
+                <input type="hidden" name="name" value="{{ photo.name }}">
+                <input type="text" name="los" placeholder="Wpisz wartość losu">
+                <button type="submit" class="btn btn-primary btn-sm">Weź udział</button>
+              </form>
+            </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

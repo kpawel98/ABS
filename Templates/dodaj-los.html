@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dodaj los</title>
+</head>
+<body>
+    <h1>Dodaj los do zdjęcia</h1>
+    <form action="/dodaj-los" method="POST">
+        <label>Nazwa zdjęcia:</label>
+        <input type="text" name="photo_name" value="{{ photo_name }}" readonly><br><br>
+        <label>Los:</label>
+        <input type="text" name="los"><br><br>
+        <input type="submit" value="Dodaj los">
+    </form>
+</body>
+</html>

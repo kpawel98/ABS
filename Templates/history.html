@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Historia
+{% endblock %}
+
+{% block content %}
+    <h1>Historia losowań</h1>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Nazwa zdjęcia</th>
+          <th scope="col">Miniaturka</th>
+          <th scope="col">Operacje</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for photo in photos %}
+        <tr>
+          <td>{{ photo.name }}</td>
+          <td><img src="{{ photo.path }}" width="100" height="100"></td>
+          <td>
+            <form action="{{ url_for('losowanie', name=photo.name) }}" method="POST">
+                <button type="submit" class="btn btn-success" onclick="return confirm('Czy na pewno chcesz usunąć to zdjęcie?')">Losuj</button>
+                <input type="number" id="ilosc" name="ilosc" required><br><br>
+            </form>
+            <form action="{{ url_for('delete_photo', name=photo.name) }}" method="POST">
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Czy na pewno chcesz usunąć to zdjęcie?')">Usuń zdjęcie</button>
+            </form>
+          </td>
+          <td>
+            {% if winners %}
+              <h2>Zwycięzcy:</h2>
+              <ul>
+                {% for winner in winners %}
+                  <li>{{ winner[0] }}: {{ winner[1] }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <h1>Wyniki losowania</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Imię</th>
+          <th>Nagroda</th>
+          <th scope="col">Miniaturka</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for zwyciezca in zwyciezcy %}
+          <tr>
+            <td>{{ zwyciezca[1] }}</td>
+
+            <td>{{ zwyciezca[2] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

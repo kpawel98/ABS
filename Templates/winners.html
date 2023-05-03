@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lista zwycięzców</title>
+</head>
+<body>
+	<h1>Lista zwycięzców</h1>
+
+	<form method="post" action="/">
+		<label for="table">Wybierz tabelę:</label>
+		<select id="table" name="table">
+			{% for table in tables %}
+			<option value="{{ table }}">{{ table }}</option>
+			{% endfor %}
+		</select>
+		<br>
+		<label for="count">Ilość zwycięzców:</label>
+		<input type="number" id="count" name="count" min="1" max="100" value="1">
+		<br>
+		<input type="submit" value="Losuj">
+	</form>
+
+	{% if winners %}
+	<table>
+		<thead>
+			<tr>
+				<th>Lp.</th>
+				<th>Imię</th>
+				<th>Nazwisko</th>
+				<th>Data urodzenia</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for winner in winners %}
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ winner[0] }}</td>
+				<td>{{ winner[1] }}</td>
+				<td>{{ winner[2] }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% endif %}
+
+</body>
+</html>

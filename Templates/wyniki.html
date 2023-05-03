@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Wyniki
+{% endblock %}
+
+{% block content %}
+    <h1>Wyniki losowania</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Imię</th>
+          <th>Nagroda</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for zwyciezca in zwyciezcy %}
+          <tr>
+            <td>{{ zwyciezca[1] }}</td>
+            <td>{{ zwyciezca[2] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}
